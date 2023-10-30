@@ -6,6 +6,7 @@ import logoArgentbank from "../assets/img/argentBankLogo.png";
 
 const Header = () => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.userProfile);
     const token = useSelector((state) => state.signIn.token);
 
     // déconnexion de l'utilisateur
@@ -25,7 +26,8 @@ const Header = () => {
                         token ? (
                             <>
                                 <NavLink to="/user" className="main-nav-item">
-                                    Anthony Lamart
+                                    {/* {user.firstName} */}
+                                    {console.log(user.userName)}
                                 </NavLink>
                                 <NavLink to="/" onClick={handleSignOut} className="main-nav-item">
                                     <i className="fa fa-sign-out"></i>

@@ -21,23 +21,21 @@ const SignInForm = () => {
             // token
             const response = await Api("getToken", null, { email: email, password: password });
             const token = response.body.token;
-
             dispatch(signIn(token));
             navigate("/user");
         } catch (err) {
-            console.error("Echec de la connexion à l'api " + err);
-            //setMessageError(err.message);
+            console.log("erreur : " + err);
+            setMessageError("Email et/ou mot de passe érroné");
         }
     };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        //console.log(setEmail);
     };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-        //console.log("setpassword " + setPassword(e.target.value));
     };
+
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -56,7 +54,7 @@ const SignInForm = () => {
                 <button type="submit" className="sign-in-button">
                     Sign In
                 </button>
-                <div className="form-error-message">{messageError}</div>
+                <div className="form-message-error">{messageError}</div>
             </form>
         </>
     );

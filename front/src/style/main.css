@@ -22,6 +22,12 @@ body {
     padding-bottom: 9rem;
 }
 
+.form-message-error {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 .signin-bg-dark {
     background-color: #12002b;
     padding-top: 3rem;

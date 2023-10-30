@@ -1,4 +1,4 @@
-const baseUrl = "localhost:3001/api/v1";
+const baseUrl = "http://localhost:3001/api/v1";
 
 const fetchData = {
     getToken: {
@@ -20,7 +20,7 @@ const fetchData = {
 
 const Api = async (info, token, data = {}) => {
     const apiData = fetchData[info];
-
+    console.log(apiData);
     if (!apiData) {
         console.error("erreur de connexion");
         return;
@@ -38,6 +38,7 @@ const Api = async (info, token, data = {}) => {
             headers,
             body: JSON.stringify(data),
         });
+        //console.log(response);
         if (!response.ok) {
             console.log(response);
             const errorData = await response.json();
@@ -45,7 +46,7 @@ const Api = async (info, token, data = {}) => {
         }
         return await response.json();
     } catch (error) {
-        console.error("Erreur lors de la connexion à l'API :", error);
+        console.error("Erreur lors de la connexion à l'API.jsx :", error);
         throw error;
     }
 };
